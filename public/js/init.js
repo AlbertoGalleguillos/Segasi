@@ -9,13 +9,11 @@ var instance = M.Materialbox.init(elem);
 var elem = document.querySelector('.tap-target');
 var instance = M.FeatureDiscovery.init(elem);
 
-function sleep(s) {
-    return new Promise(resolve => setTimeout(resolve, s * 1000));
-}
-
-async function showPortfolio() {
-    await sleep(5);
-    instance.open();
-}
-  
-showPortfolio();
+window.onscroll = function(ev) {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        // you're at the bottom of the page
+        instance.open();
+    //} else {
+        //instance.close();
+    }
+};
